@@ -1,12 +1,12 @@
-# 模型选择: 以最优子集回归为例
-## 最优子集回归
-当我们进行回归分析时，我们可能会碰到自变量过多, 且存在多重共线性, 或者全模型可能是过度拟合的.
-- 针对这种情况，可以人为根据经验判断筛选对因变量有影响的自变量，比如距离周边学校的距离去预测房价.
-- 但通常我们并不是相关领域的专家, 对可能影响因变量的自变量并不了解，于是我们需要运用算法获得预测效果最优的模型, 进而接近真实模型，比如最优子集回归.
-- 最优子集回归, 即对 $p$ 个预测变量的所有可能组合分别使用最小二乘回归进行拟合.
-- 具体地, 对含1变量的模型，拟合$p$个模型; 对含两个变量的模型，拟合 $p(p-1)/2$ 个模型，以此类推，总共拟合 $2^p-1$ 个模型.
-## 交叉验证
-- 把数据分成 $K$ 折.
-- 依次去掉第 $k$ 折数据, 训练出模型, 给出在第 $k$ 折数据的预测值, $k=1,\dots,K$
-- 构建 $K$ 折交叉验证误差
+# Model selection: Taking optimal subset regression as an example
+## Optimal subset regression
+When conducting regression analysis, we may encounter too many independent variables and multicollinearity, or the entire model may be overfitting
+- In response to this situation, it is possible to manually screen independent variables that have an impact on the dependent variable based on experience, such as the distance from surrounding schools, to predict housing prices
+- But usually we are not experts in the relevant field and do not understand the independent variables that may affect the dependent variable. Therefore, we need to use algorithms to obtain the model with the best prediction performance, and then approach the real model, such as optimal subset regression
+- Optimal subset regression, which involves fitting all possible combinations of p predictor variables using least squares regression
+- Specifically, for a model with 1 variable, fit $p$ models; For a model with two variables, fit $p(p-1)/2$ models, and so on, for a total of $2^p-1$ models
+## Cross validation
+-Divide the data into $K$ folds
+-Remove the k-th fold data in sequence, train the model, and provide the predicted value for the k-th fold data, where $k=1, \dots, K$
+-Build $K$ fold cross validation error
 $$\frac 1 n  \sum_{k=1}^K \sum_{i=1}^{n_k} \left(y_{ki} - \hat{y}_{ki}^{(-k)}\right)^2$$

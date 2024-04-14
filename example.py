@@ -1,5 +1,5 @@
 import numpy as np
-from eva import OptimalSubsetRegression
+from evaluation import OptimalSubsetRegression
 
 x = np.loadtxt("prostate/x.txt", delimiter=",")
 y = np.loadtxt("prostate/y.txt", delimiter=",")
